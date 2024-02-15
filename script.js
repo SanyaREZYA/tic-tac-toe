@@ -25,10 +25,10 @@ function handleMove(fieldId) {
     }
 }
 
-
 function togglePlayer() {
     currentPlayer = currentPlayer === "Player1" ? "Player2" : "Player1";
 }
+
 
 function checkWinner() {
     const lines = [
@@ -54,10 +54,12 @@ function checkWinner() {
         }
     }
 
-    if (!document.querySelectorAll(".field:not(:empty)").length) {
+    if (document.querySelectorAll(".field:not(:empty)").length === 9) {
         announceTie();
+        return;
     }
 }
+
 
 function announceWinner(winner) {
     const modal = createModal(winner);
@@ -106,8 +108,12 @@ function createModal(text) {
 
     const winnerText = document.createElement("p");
     winnerText.style.fontSize = "1.5em";
-    winnerText.style.margin = "auo";
-    winnerText.innerText = `Player ${text} wins!`;
+    winnerText.style.margin = "auto";
+    if (text == "It's a tie!") {
+        winnerText.innerText = "It's a tie!";
+    } else {
+        winnerText.innerText = `Player ${text} wins!`;
+    }
     modalContent.appendChild(winnerText);
 
     const restartButton = document.createElement("button");
@@ -121,7 +127,6 @@ function createModal(text) {
     restartButton.style.marginTop = "auto";
     restartButton.addEventListener("click", function () {
         resetGame();
-        modalContainer.remove();
     });
 
     restartButton.addEventListener("mouseover", function () {
