@@ -125,6 +125,7 @@ function createModal(text) {
     restartButton.style.color = "white";
     restartButton.innerText = "Restart";
     restartButton.style.marginTop = "auto";
+
     restartButton.addEventListener("click", function () {
         resetGame();
     });
@@ -141,7 +142,6 @@ function createModal(text) {
 
     modalContent.appendChild(winnerText);
     modalContent.appendChild(restartButton);
-
     modalContainer.appendChild(modalContent);
 
     return modalContainer;
