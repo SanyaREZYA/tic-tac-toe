@@ -1,14 +1,16 @@
 .body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
     background-image: url("images/background.jpg");
     font-size: 16px;
 }
 
 .header {
     font-size: 2em;
-    padding: 20px;
+    margin-top: 10px;
     color: wheat;
 } 
 
@@ -51,7 +53,7 @@
 
 .field > img {
     transition: 0,4s;
-    width: 200px;
+    width: 100%;
 }
 
 .field:hover {
@@ -88,12 +90,38 @@
     margin: auto;
 }
 
-.modal-content__button {
-    width: 150px;
-    height: 50px;
+.button {
     border: 1px #B88E2F solid;
     background-color: #B88E2F;
     font-size: 16px;
     color: white;
+}
+
+.button:hover {
+    background-color: white;
+    color: #B88E2F;
+}
+
+.modal-content__button {
+    width: 150px;
+    height: 50px;
     margin-top: auto;
+}
+
+.setting {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background-color: white;
+    border: 5px #B88E2F solid;
+}
+
+.setting__field {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 5px;
+    flex-wrap: wrap;
+    gap: 5px;
+    border: 2px #B88E2F solid;
 }
