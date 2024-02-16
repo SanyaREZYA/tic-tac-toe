@@ -29,7 +29,6 @@ function togglePlayer() {
     currentPlayer = currentPlayer === "Player1" ? "Player2" : "Player1";
 }
 
-
 function checkWinner() {
     const lines = [
         ["field1", "field2", "field3"],
@@ -60,7 +59,6 @@ function checkWinner() {
     }
 }
 
-
 function announceWinner(winner) {
     const modal = createModal(winner);
     document.body.appendChild(modal);
@@ -73,7 +71,6 @@ function announceWinner(winner) {
 
     gameOver = true;
 }
-
 
 function announceTie() {
     const modal = createModal("It's a tie!");
@@ -147,8 +144,6 @@ function createModal(text) {
     return modalContainer;
 }
 
-
-
 function resetGame() {
     const fields = document.querySelectorAll(".field");
     fields.forEach(field => {
@@ -162,5 +157,3 @@ function resetGame() {
         modalContainer.remove();
     }
 }
-
-
