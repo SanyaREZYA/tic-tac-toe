@@ -35,10 +35,6 @@
     font-weight: bold;
 }
 
-.player-info:hover {
-    scale: 120%;
-}
-
 .playground {
     display: flex;
     flex-wrap: wrap;
@@ -60,4 +56,44 @@
 
 .field:hover {
     background-color: rgb(206, 206, 206);
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.winner-text {
+    font-size: 1.5em;
+    margin: auto;
+}
+
+.modal-content__button {
+    width: 150px;
+    height: 50px;
+    border: 1px #B88E2F solid;
+    background-color: #B88E2F;
+    font-size: 16px;
+    color: white;
+    margin-top: auto;
 }

@@ -3,6 +3,13 @@
 let currentPlayer = "Player1";
 let gameOver = false;
 
+const player1Score = document.getElementById("player1Score");
+const player2Score = document.getElementById("player2Score");
+const player1 = document.getElementById("player1");
+const player2 = document.getElementById("player2");
+player1.style.scale = "120%";
+player2.style.scale = "100%";
+
 document.addEventListener("DOMContentLoaded", function () {
     const fields = document.querySelectorAll(".field");
     fields.forEach(field => {
@@ -27,6 +34,14 @@ function handleMove(fieldId) {
 
 function togglePlayer() {
     currentPlayer = currentPlayer === "Player1" ? "Player2" : "Player1";
+
+    if (currentPlayer == "Player1") {
+        player1.style.scale = "120%";
+        player2.style.scale = "100%";
+    } else {
+        player1.style.scale = "100%";
+        player2.style.scale = "120%";
+    }
 }
 
 function checkWinner() {
@@ -64,9 +79,9 @@ function announceWinner(winner) {
     document.body.appendChild(modal);
 
     if (winner === "Player1") {
-        document.getElementById("player1Score").innerText = parseInt(document.getElementById("player1Score").innerText) + 1;
+        player1Score.innerText = parseInt(player1Score.innerText) + 1;
     } else {
-        document.getElementById("player2Score").innerText = parseInt(document.getElementById("player2Score").innerText) + 1;
+        player1Score.innerText = parseInt(player2Score.innerText) + 1;
     }
 
     gameOver = true;
@@ -81,31 +96,12 @@ function announceTie() {
 function createModal(text) {
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("modal-container");
-    modalContainer.style.position = "fixed";
-    modalContainer.style.top = "0";
-    modalContainer.style.left = "0";
-    modalContainer.style.width = "100%";
-    modalContainer.style.height = "100%";
-    modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    modalContainer.style.display = "flex";
-    modalContainer.style.justifyContent = "center";
-    modalContainer.style.alignItems = "center";
 
     const modalContent = document.createElement("div");
-    modalContent.style.backgroundColor = "white";
-    modalContent.style.padding = "20px";
-    modalContent.style.width = "500px";
-    modalContent.style.height = "100px";
-    modalContent.style.borderRadius = "10px";
-    modalContent.style.textAlign = "center";
-    modalContent.style.display = "flex";
-    modalContent.style.flexDirection = "column";
-    modalContent.style.justifyContent = "center";
-    modalContent.style.alignItems = "center";
+    modalContent.classList.add("modal-content");
 
     const winnerText = document.createElement("p");
-    winnerText.style.fontSize = "1.5em";
-    winnerText.style.margin = "auto";
+    winnerText.classList.add("winner-text");
 
     if (text == "It's a tie!") {
         winnerText.innerText = "It's a tie!";
@@ -115,14 +111,8 @@ function createModal(text) {
     modalContent.appendChild(winnerText);
 
     const restartButton = document.createElement("button");
-    restartButton.style.width = "150px";
-    restartButton.style.height = "50px";
-    restartButton.style.border = "1px #B88E2F solid";
-    restartButton.style.backgroundColor = "#B88E2F";
-    restartButton.style.fontSize = "16px";
-    restartButton.style.color = "white";
+    restartButton.classList.add("modal-content__button");
     restartButton.innerText = "Restart";
-    restartButton.style.marginTop = "auto";
 
     restartButton.addEventListener("click", function () {
         resetGame();
@@ -148,12 +138,15 @@ function createModal(text) {
 function resetGame() {
     const fields = document.querySelectorAll(".field");
     const modalContainer = document.querySelector(".modal-container");
-    
+
     fields.forEach(field => {
         field.innerHTML = "";
     });
     currentPlayer = "Player1";
     gameOver = false;
+
+                player1.style.scale = "120%";
+    player2.style.scale = "100%";
 
     if (modalContainer) {
         modalContainer.remove();
