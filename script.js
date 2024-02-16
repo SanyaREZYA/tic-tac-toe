@@ -106,6 +106,7 @@ function createModal(text) {
     const winnerText = document.createElement("p");
     winnerText.style.fontSize = "1.5em";
     winnerText.style.margin = "auto";
+
     if (text == "It's a tie!") {
         winnerText.innerText = "It's a tie!";
     } else {
@@ -146,13 +147,14 @@ function createModal(text) {
 
 function resetGame() {
     const fields = document.querySelectorAll(".field");
+    const modalContainer = document.querySelector(".modal-container");
+    
     fields.forEach(field => {
         field.innerHTML = "";
     });
     currentPlayer = "Player1";
     gameOver = false;
 
-    const modalContainer = document.querySelector(".modal-container");
     if (modalContainer) {
         modalContainer.remove();
     }
